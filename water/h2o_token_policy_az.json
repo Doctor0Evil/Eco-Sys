@@ -1,0 +1,47 @@
+{
+  "token": "H2O-AZ-RIGHTS",
+  "region": "Arizona",
+  "unit": {
+    "volume_liters": 10,
+    "time_window_hours": 1,
+    "scope": "district_pipe_segment"
+  },
+  "anchors": {
+    "sensors": [
+      "treatment_plant_flow_meters",
+      "district_scada_nodes",
+      "building_smart_meters"
+    ],
+    "oracle_update_interval_sec": 60
+  },
+  "governance": {
+    "issuers": [
+      "municipal_water_authority",
+      "regulated_utility_partners"
+    ],
+    "allowed_holders": [
+      "residential_accounts",
+      "critical_infrastructure",
+      "municipal_reserve",
+      "certified_relief_orgs"
+    ],
+    "transfer_rules": {
+      "allow_open_speculation": false,
+      "allow_peer_trade": false,
+      "allow_policy_driven_reallocation": true
+    },
+    "human_minimum": {
+      "liters_per_person_per_day": 50,
+      "transferable": false
+    },
+    "emergency_mode": {
+      "trigger": "declared_state_of_emergency",
+      "priority_targets": [
+        "hospitals",
+        "shelters",
+        "fire_services"
+      ],
+      "full_audit_required": true
+    }
+  }
+}
