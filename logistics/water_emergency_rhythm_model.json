@@ -1,0 +1,39 @@
+{
+  "model_id": "WATER_EMERGENCY_RHYTHM_V1",
+  "region": "Arizona",
+  "inputs": {
+    "population_data": "census_api",
+    "climate_data": "noaa_feed",
+    "infrastructure": [
+      "road_network",
+      "warehouse_locations",
+      "store_locations"
+    ],
+    "historical_events": "municipal_emergency_logs"
+  },
+  "outputs": {
+    "per_zone_daily_liters": true,
+    "packaging_breakdown": [
+      "bottles_0_5L",
+      "gallon_jugs",
+      "bulk_tanks"
+    ],
+    "route_plans": true
+  },
+  "safety_margin": {
+    "default_percent": 15,
+    "adaptive": true,
+    "per_zone_tuning": true
+  },
+  "optimization": {
+    "objectives": [
+      "minimize_over_supply",
+      "minimize_truck_trips",
+      "respect_delivery_sla"
+    ]
+  },
+  "feedback": {
+    "actual_usage_ingest": "post_event_reports",
+    "retrain_interval_days": 30
+  }
+}
