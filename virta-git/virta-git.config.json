@@ -1,0 +1,170 @@
+{
+  "system": "Virta-Git",
+  "version": "1.0.0",
+  "updated_at_utc": "2026-01-03T12:10:00Z",
+  "description": "Virta-Git root manifest: Git-based, non-fiction, policy-enforced source of truth for Virta-Sys and VSC-ARTEMIS.",
+  "anchors": {
+    "virta_sys": {
+      "role": "virtual_os_cluster_substrate",
+      "policy_ref": "virta-sys/policies/vsc_artemis_runtime_policy.json",
+      "integration": {
+        "mode": "read_only_for_audit",
+        "cluster_orchestrator_ref": "virta_sys/virtual_clusters/orchestrator.rs"
+      }
+    },
+    "vsc_artemis": {
+      "role": "system_brain_orchestration_layer",
+      "integration": {
+        "mode": "instruction_and_policy_binding",
+        "data_lake_source": "DATA-LAKE",
+        "typewriter_source": "TYPEWRITER",
+        "dream_catcher_source": "DREAM-CATCHER"
+      }
+    }
+  },
+  "repositories": {
+    "tracked": [
+      {
+        "id": "REPO-VIRTA-SYS",
+        "name": "Virta-Sys",
+        "url": "https://github.com/Doctor0Evil/Virta-Sys.git",
+        "type": "git",
+        "required": true,
+        "policy_profile": "core_runtime"
+      },
+      {
+        "id": "REPO-VSC-ARTEMIS",
+        "name": "VSC-ARTEMIS-5E8A2B7C-AC41-4F2B-BD6E-9C3E7A1F4D2E",
+        "url": "https://github.com/Doctor0Evil/VSC-ARTEMIS-5E8A2B7C-AC41-4F2B-BD6E-9C3E7A1F4D2E.git",
+        "type": "git",
+        "required": true,
+        "policy_profile": "system_brain"
+      },
+      {
+        "id": "REPO-VM-CLUSTER-NATION",
+        "name": "VM-Cluster-Nation",
+        "url": "https://github.com/Doctor0Evil/VM-Cluster-Nation.git",
+        "type": "git",
+        "required": false,
+        "policy_profile": "cluster_extensions"
+      },
+      {
+        "id": "REPO-GOOGOLSWARM-OS",
+        "name": "Googolswarm.os",
+        "url": "https://github.com/Doctor0Evil/Googolswarm.os.git",
+        "type": "git",
+        "required": false,
+        "policy_profile": "swarm_runtime"
+      }
+    ],
+    "constraints": {
+      "require_signed_commits": true,
+      "require_cryptographic_authorship": true,
+      "allow_shallow_clones": false,
+      "allow_untracked_repositories": false
+    }
+  },
+  "authorship": {
+    "typewriter_binding": true,
+    "requirements": {
+      "signed_metadata_required": true,
+      "vm_cluster_signals_required": true,
+      "ownership_assertion_storage": "DATA-LAKE",
+      "dispute_evidence_storage": "DATA-LAKE"
+    },
+    "primary_rights_holders": [
+      {
+        "id": "AUTHOR-DR-JACOB-SCOTT-FARMER",
+        "name": "Dr. Jacob Scott Farmer",
+        "role": "lead_architect",
+        "claims": [
+          "GoogolswarmAI Nanoswarm Research Compliance System",
+          "VM-Cluster-Nation",
+          "Googolswarm.os"
+        ],
+        "verification": {
+          "metadata_source": "TYPEWRITER",
+          "repository_signals": [
+            "REPO-VM-CLUSTER-NATION",
+            "REPO-GOOGOLSWARM-OS"
+          ]
+        }
+      }
+    ]
+  },
+  "policies": {
+    "non_fiction": {
+      "config_path": "config/policies/non_fiction_policy.toml",
+      "enforced": true,
+      "rules": {
+        "allow_fiction": false,
+        "allow_hypothetical": false,
+        "allow_theoretical_only": false,
+        "require_real_world_anchor": true
+      }
+    },
+    "progress_requirement": {
+      "config_path": "config/policies/progress_policy.toml",
+      "enforced": true,
+      "acceptable_progress_types": [
+        "new_code_asset",
+        "extended_code_asset",
+        "new_policy_document",
+        "config_refinement",
+        "validation_rule_addition"
+      ]
+    },
+    "authorship": {
+      "config_path": "config/policies/authorship_policy.toml",
+      "enforced": true,
+      "require_cryptographically_signed_authorship": true
+    }
+  },
+  "io_policies": {
+    "sanitization": {
+      "on_input": true,
+      "pipeline": [
+        "whitespace_normalization",
+        "markup_stripping",
+        "entity_standardization",
+        "fiction_detection",
+        "asset_reference_check"
+      ],
+      "fiction_detection": {
+        "mode": "strict",
+        "on_detection": {
+          "actions": [
+            "reject_segment",
+            "log_incident",
+            "attach_violation_code:FIC-001"
+          ]
+        }
+      }
+    }
+  },
+  "interaction_policy": {
+    "progress_requirement": {
+      "enforced": true,
+      "on_non_progress": {
+        "actions": [
+          "reject_response",
+          "log_incident",
+          "increment_karma_penalty:MINOR"
+        ]
+      }
+    }
+  },
+  "logging": {
+    "audit_trail": {
+      "enabled": true,
+      "scope": [
+        "sanitization_pipeline",
+        "copy_protection_events",
+        "karma_score_updates",
+        "git_sync_events",
+        "policy_enforcement_events"
+      ],
+      "storage_target": "DATA-LAKE"
+    }
+  }
+}

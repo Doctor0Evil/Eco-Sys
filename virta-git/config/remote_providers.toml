@@ -1,0 +1,18 @@
+[default]
+provider = "github"
+fetch_depth = 0  # 0 = full history, no shallow clones, as required by Virta-Git policies.[2]
+require_tls = true
+
+[providers.github]
+base_url = "https://github.com"
+allow_anonymous_https = true
+enforce_signed_commits = true
+
+[providers.gitlab]
+base_url = "https://gitlab.com"
+allow_anonymous_https = true
+enforce_signed_commits = true
+
+[constraints]
+allow_untracked_repositories = false
+require_cryptographic_authorship = true

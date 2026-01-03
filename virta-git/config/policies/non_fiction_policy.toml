@@ -1,0 +1,27 @@
+[policy]
+id = "NON-FICTION"
+description = "Enforce non-fiction, real-world–anchored content across all Virta-Git operations."
+enforced = true
+
+[rules]
+allow_fiction = false
+allow_hypothetical = false
+allow_theoretical_only = false
+require_real_world_anchor = true
+
+[pipeline]
+steps = [
+  "whitespace_normalization",
+  "markup_stripping",
+  "entity_standardization",
+  "fiction_detection",
+  "asset_reference_check"
+]
+
+[fiction_detection]
+mode = "strict"
+on_detection_actions = [
+  "reject_segment",
+  "log_incident",
+  "attach_violation_code:FIC-001"
+]

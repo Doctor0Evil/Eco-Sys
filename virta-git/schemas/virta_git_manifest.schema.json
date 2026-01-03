@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Virta-Git Manifest",
+  "type": "object",
+  "required": [
+    "system",
+    "version",
+    "anchors",
+    "repositories",
+    "authorship",
+    "policies",
+    "io_policies",
+    "interaction_policy",
+    "logging"
+  ],
+  "properties": {
+    "system": {
+      "type": "string",
+      "const": "Virta-Git"
+    },
+    "version": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "anchors": {
+      "type": "object",
+      "required": ["virta_sys", "vsc_artemis"],
+      "properties": {
+        "virta_sys": {
+          "type": "object",
+          "required": ["role"],
+          "properties": {
+            "role": { "type": "string" },
+            "policy_ref": { "type": ["string", "null"] },
+            "integration": { "type": ["object", "null"] }
+          }
+        },
+        "vsc_artemis": {
+          "type": "object",
+          "required": ["role"],
+          "properties": {
+            "role": { "type": "string" },
+            "policy_ref": { "type": ["string", "null"] },
+            "integration": { "type": ["object", "null"] }
+          }
+        }
+      }
+    },
+    "repositories": {
+      "type": "object",
+      "required": ["tracked", "constraints"],
+      "properties": {
+        "tracked": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "url", "type", "required", "policy_profile"],
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "url": { "type": "string" },
+              "type": { "type": "string" },
+              "required": { "type": "boolean" },
+              "policy_profile": { "type": "string" }
+            }
+          }
+        },
+        "constraints": {
+          "type": "object",
+          "required": [
+            "require_signed_commits",
+            "require_cryptographic_authorship",
+            "allow_shallow_clones",
+            "allow_untracked_repositories"
+          ],
+          "properties": {
+            "require_signed_commits": { "type": "boolean" },
+            "require_cryptographic_authorship": { "type": "boolean" },
+            "allow_shallow_clones": { "type": "boolean" },
+            "allow_untracked_repositories": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "authorship": {
+      "type": "object",
+      "required": ["typewriter_binding", "requirements", "primary_rights_holders"],
+      "properties": {
+        "typewriter_binding": { "type": "boolean" },
+        "requirements": {
+          "type": "object",
+          "required": [
+            "signed_metadata_required",
+            "vm_cluster_signals_required",
+            "ownership_assertion_storage",
+            "dispute_evidence_storage"
+          ],
+          "properties": {
+            "signed_metadata_required": { "type": "boolean" },
+            "vm_cluster_signals_required": { "type": "boolean" },
+            "ownership_assertion_storage": { "type": "string" },
+            "dispute_evidence_storage": { "type": "string" }
+          }
+        },
+        "primary_rights_holders": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "role", "claims", "verification"],
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "role": { "type": "string" },
+              "claims": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "verification": {
+                "type": "object",
+                "required": ["metadata_source", "repository_signals"],
+                "properties": {
+                  "metadata_source": { "type": "string" },
+                  "repository_signals": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "policies": {
+      "type": "object"
+    },
+    "io_policies": {
+      "type": "object"
+    },
+    "interaction_policy": {
+      "type": "object"
+    },
+    "logging": {
+      "type": "object"
+    }
+  }
+}

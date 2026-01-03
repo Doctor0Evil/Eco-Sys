@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Virta-Git Authorship Record",
+  "type": "object",
+  "required": [
+    "record_id",
+    "rights_holder_id",
+    "rights_holder_name",
+    "rights_holder_role",
+    "repository_id",
+    "repository_url",
+    "commit_hash",
+    "claim_scope",
+    "claims",
+    "signed_metadata_reference",
+    "vm_cluster_signal_reference",
+    "created_at_utc",
+    "verification_status"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "description": "UUID of the authorship record."
+    },
+    "rights_holder_id": {
+      "type": "string"
+    },
+    "rights_holder_name": {
+      "type": "string"
+    },
+    "rights_holder_role": {
+      "type": "string"
+    },
+    "repository_id": {
+      "type": "string"
+    },
+    "repository_url": {
+      "type": "string"
+    },
+    "commit_hash": {
+      "type": "string"
+    },
+    "claim_scope": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": ["Repository"]
+        },
+        {
+          "type": "object",
+          "required": ["Subtree"],
+          "properties": {
+            "Subtree": {
+              "type": "object",
+              "required": ["path_prefix"],
+              "properties": {
+                "path_prefix": { "type": "string" }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["File"],
+          "properties": {
+            "File": {
+              "type": "object",
+              "required": ["path"],
+              "properties": {
+                "path": { "type": "string" }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["Concept"],
+          "properties": {
+            "Concept": {
+              "type": "object",
+              "required": ["identifier"],
+              "properties": {
+                "identifier": { "type": "string" }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "claims": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "signed_metadata_reference": {
+      "type": "string"
+    },
+    "vm_cluster_signal_reference": {
+      "type": "string"
+    },
+    "created_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "verification_status": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": ["Pending", "Verified"]
+        },
+        {
+          "type": "object",
+          "required": ["Rejected"],
+          "properties": {
+            "Rejected": {
+              "type": "object",
+              "required": ["reason"],
+              "properties": {
+                "reason": { "type": "string" }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
