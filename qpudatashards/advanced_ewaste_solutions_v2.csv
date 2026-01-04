@@ -1,0 +1,6 @@
+model_id,model_name,domain,primary_method,objective,decision_variables,key_constraints,eco_impact_score,geo_scope,reference_year
+M11,RealTimeEwasteSorting,recycling,computer_vision,"maximize sorting accuracy and speed","camera_placement; model_parameters; conveyor_speed","accuracy >= 95%; throughput >= 1000 items/hour",0.92,PlantLevel,2026
+M12,BlockchainEwasteTracking,logistics,blockchain,"ensure transparency and traceability","ledger_design; smart_contract_rules; iot_integration","immutability; compliance_with_regulations",0.89,Global,2026
+M13,AIOptimizedEnergyManagement,energy,reinforcement_learning,"minimize energy consumption","control_parameters; equipment_scheduling; renewable_integration","energy_reduction >= 30%; safety_compliance",0.95,PlantLevel,2026
+M14,CommunityEwasteApp,community,agent_based_model,"maximize collection rates and engagement","user_incentives; routing_optimization; partnership_strategy","coverage >= 80%; user_satisfaction >= 85%",0.87,UrbanRegion,2026
+M15,CarbonFootprintCalculator,sustainability,empirical_modeling,"quantify device carbon footprint","device_parameters; usage_data; disposal_method","measurement_error <= 5%; user_friendliness",0.85,Global,2026
