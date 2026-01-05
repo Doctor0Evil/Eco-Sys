@@ -1,0 +1,15 @@
+gate_id,name,from_node,to_node,max_flow_m3s,group_id
+1,TempeDam_CrestGroup_A,9,18,400,1
+2,TempeDam_CrestGroup_B,9,18,400,1
+3,TempeDam_SpillGroup_C,9,19,400,2
+4,TempeDam_SpillGroup_D,9,19,400,2
+
+5,SRP_Diversion_East,3,10,150,3
+6,SRP_Diversion_Central,3,11,150,3
+7,Canal_Turnout_E_to_WTP_E,10,12,80,4
+8,Canal_Turnout_C_to_WTP_C,11,13,80,4
+9,Canal_Turnout_W_to_WTP_W,11,14,80,4
+
+10,Urban_Outfall_East,15,18,120,5
+11,Urban_Outfall_Central,16,18,120,5
+12,Urban_Outfall_West,17,19,120,5
