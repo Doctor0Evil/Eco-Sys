@@ -1,0 +1,9 @@
+hardware_type,defconfig,kernel_branch,vehicle_models,oss_base_only,eco_channel,safety_channel,eco_impact_score,notes
+Autopilot_HW2,ap-hw2_defconfig,tesla-3.18-hw2,Model S/X/3,true,energy_efficiency;hw_lifecycle,safety_monitoring;ota_update,0.65,"Nvidia ECU; supports power-efficient updates"
+Autopilot_HW2_Model3,ap-hw2_model3_defconfig,tesla-3.18-hw2,Model 3,true,energy_efficiency;hw_lifecycle,safety_monitoring;ota_update,0.66,"HW2 variant for Model 3"
+Autopilot_HW2.5,ap-hw25b_defconfig,tesla-3.18-hw25,Model S/X/3,true,energy_efficiency;hw_lifecycle,safety_monitoring;ota_update,0.70,"Improved Nvidia ECU"
+Autopilot_HW3,ap-hw3_defconfig,tesla-4.14-hw3,Model S/X,true,accelerator_utilization;hw_lifecycle,safety_monitoring;ota_update,0.80,"FSD SoC; efficient AI inference"
+Autopilot_HW3_Model3,ap-hw3_model3_defconfig,tesla-4.14-hw3,Model 3/Y,true,accelerator_utilization;hw_lifecycle,safety_monitoring;ota_update,0.81,"HW3 for Model 3/Y"
+Infotainment_MCU1,ice-elk_defconfig,tegra-2.6,Model S/X,true,infotainment_power;recycling,safety_logging;user_alerts,0.60,"Legacy Tegra MCU"
+Infotainment_MCU2,ice-mrb_defconfig,tegra-4.4,Model S/X/3,true,infotainment_power;hw_lifecycle,safety_logging;user_alerts,0.68,"Updated Tegra MCU"
+Infotainment_CID,mcu-cid_defconfig,intel-4.1,Model S/X,true,infotainment_power;recycling,safety_logging;user_alerts,0.72,"Intel-based CID"
