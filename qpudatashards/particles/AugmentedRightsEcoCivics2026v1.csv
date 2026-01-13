@@ -1,0 +1,11 @@
+nodeid,scope,region,indicator,unit,baseline_value,improved_value,period,ecoimpactscore,augmentation_rights_score,karmaperunit,notes
+PHX-AUG-CHARTER-01,governance,Phoenix-AZ,AugmentedRightsCharterCoverage,fraction,0.00,0.75,2026-01-01/2026-12-31,0.70,0.95,0.15,"Share of city population covered by neurorights and augmentation non-discrimination charter"
+PHX-AUG-WALLET-01,identity,Phoenix-AZ,SovereignAugIDWalletsIssued,count,0,25000,2026-01-01/2026-12-31,0.68,0.90,0.10,"Non-custodial wallets binding human IDs, augmentations, and AI companions without asset ownership"
+PHX-AUG-EMPLOY-01,governance,Phoenix-AZ,AugmentationSafeContracts,fraction,0.05,0.80,2026-01-01/2026-12-31,0.72,0.93,0.12,"Employment/housing contracts with explicit augmentation protections"
+PHX-AUG-SANCTUARY-01,infrastructure,Phoenix-AZ,SanctuaryModeZones,fraction,0.00,0.40,2026-01-01/2026-12-31,0.75,0.97,0.08,"Public spaces where augmented citizens can opt out of profiling and targeted sensing"
+PHX-AUG-KARMA-01,security,Phoenix-AZ,KarmaTolerantIncidentsReviewed,fraction,0.00,0.85,2026-01-01/2026-12-31,0.80,0.92,0.06,"High-karma augmented citizens receiving human review instead of auto-lockout in security systems"
+PHX-AUG-ACCESS-01,infrastructure,Phoenix-AZ,AugmentedAccessibleCorridors,fraction,0.10,0.70,2026-01-01/2026-12-31,0.78,0.96,0.09,"Skywalks and transit hubs meeting AR/exoskeleton/EMI accessibility criteria"
+PHX-AUG-HEALTH-01,health,Phoenix-AZ,EcoHealthCoMonitoringNodes,count,0,120,2026-01-01/2026-12-31,0.74,0.88,0.07,"Nodes that adjust environment based on anonymous augmentation and health metrics"
+PHX-AUG-CIVIC-01,governance,Phoenix-AZ,AugmentedAssemblyParticipation,fraction,0.00,0.35,2026-01-01/2026-12-31,0.77,0.94,0.11,"Share of city deliberation events with meaningful augmented-citizen participation"
+PHX-AUG-COMPANION-01,identity,Phoenix-AZ,RegisteredAICompanionLinks,count,0,15000,2026-01-01/2026-12-31,0.69,0.93,0.05,"Non-transferable AI friendship links recorded under citizen control"
+PHX-AUG-ABUSE-01,oversight,Phoenix-AZ,ConfirmedAugmentationRightsViolations,count_per_year,50,10,2026-01-01/2026-12-31,0.83,0.98,0.20,"Verified violations of augmentation rights; lower is better"
