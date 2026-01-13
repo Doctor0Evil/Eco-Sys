@@ -1,0 +1,28 @@
+aln filename qpudatashards/particles/EcoSkywalkPhoenix2026v1.aln
+format  ALN 1.0
+purpose Eco-skywalk HUD events + user eco summaries + EcoHelpVectors for Phoenix smart-city pilots
+destination-path qpudatashards/particles/EcoSkywalkPhoenix2026v1.aln
+
+module EcoSkywalkPhoenix2026v1
+  profile      ECO-HUD-NONINVASIVE
+  host-runtime Reality.os
+  language     ALN
+  encryption   AES-256-GCM
+  pqc          Kyber-1024
+  audit-ledger HyperledgerVital
+  zerotrust    true
+
+include EcoSkywalkPhoenix2026v1   # schema defined above
+
+devtunnel.mermaid
+  graph TD
+    HUD[Eco-skywalk HUD] --> EVENTS[EcoSkywalkEvent stream]
+    HUD --> USER[EcoSkywalkUserSummary daily]
+    EVENTS --> ECOHELP[EcoHelpVector aggregation]
+    ECOHELP --> DASH[Phoenix/Tempe Eco Dashboard]
+    USER --> HOSTBUDGET[Reality.os HostBudget]
+    HOSTBUDGET --> THROTTLE[HUD eco throttling]
+    ECOHELP --> AUDIT[Eco audit ledger]
+
+hex-proof-vector
+  0x112233445566778899aabbccddeeff00112233445566778899aabbccddeeff00
