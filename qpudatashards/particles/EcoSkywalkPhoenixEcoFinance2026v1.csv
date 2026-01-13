@@ -1,0 +1,11 @@
+nodeid,scope,region,indicator,unit,baseline_value,improved_value,period,ecoimpactscore,karmaperunit,notes
+PHX-CORRIDOR-01,eco-corridor,Phoenix-AZ,AvgDailyDeviceHoursPerUser,hours,5.0,3.5,2026-01-01/2026-03-31,0.82,0.10,"Eco-skywalk corridor near downtown, reduced phone time via shaded HUD wayfinding"
+PHX-CORRIDOR-01-E,eco-corridor,Phoenix-AZ,AnnualEnergySavedPerUser,kWh,0.0,45.0,2026-01-01/2026-12-31,0.80,0.05,"Modeled kWh savings from reduced A/C load and indoor device use"
+PHX-CORRIDOR-01-W,eco-corridor,Phoenix-AZ,EmbodiedDevicesAverted_per1000users,devices,0.0,12.0,2026-01-01/2026-12-31,0.78,0.02,"Fewer replacement phones/tablets via lower duty cycles"
+PHX-WATER-LP-PFBS,water-node,Phoenix-AZ,PFBS_MassAvoided,kg,0.0,0.015,2026-01-01/2026-12-31,0.90,0.67,"Lake Pleasant PFBS reductions from CEIM-XJ node impact"
+PHX-GILA-ECO,water-node,Gila-AZ,Ecoli_RiskUnitsAvoided,unitless,0.0,2.4,2026-01-01/2026-12-31,0.93,0.67,"Impaired Gila E. coli segment with buffers and advisories"
+PHX-FOG-QSR-01,waste-node,Phoenix-AZ,FOG_MassAvoided,kg_per_day,0.0,2.3,2026-01-01/2026-03-31,0.85,0.75,"Kitchen FOG desiccator inline with grease trap, EPA 1664B-aligned lab results"
+PHX-LIGHTING-01,energy-node,Phoenix-AZ,StreetLighting_kWhReduced,kWh_per_year,0.0,180000.0,2026-01-01/2026-12-31,0.88,0.20,"Smart dimming in Eco-skywalk districts with HostBudget constraints"
+PHX-LOGISTICS-01,logistics-node,Phoenix-AZ,DieselLitersAvoided,liters_per_year,0.0,120000.0,2026-01-01/2026-12-31,0.81,0.15,"Consolidated low-emission delivery windows around Eco-skywalk"
+PHX-LIBRARY-01,civic-node,Phoenix-AZ,DeviceHoursShiftedToPublic,hours_per_year,0.0,50000.0,2026-01-01/2026-12-31,0.79,0.08,"Library eco-quests moving screen time into public, lower-energy facilities"
+PHX-OPEN-DATA-01,governance-node,Phoenix-AZ,ShardsPublished_count,files,0,120,2026-01-01/2026-12-31,0.77,0.05,"Open eco governance shards (EcoHelpVector, CEIMXJKarma, EcoKarmaToleranceMetrics)"
