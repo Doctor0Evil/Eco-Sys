@@ -1,0 +1,93 @@
+aln path particles/ecosys/ecosys.donut.scheduler.v1.aln
+
+particle ecosys.donut.scheduler.v1
+version v1
+kind    scheduler.objective
+description,
+  EcoSys-aware donut-loop scheduler: per-epoch optimization over task
+  assignments to hosts within each Globecell, maximizing expected CHAT
+  gain and CyberRank improvement subject to compute, IO, EcoSys, and
+  neurorights/corridor constraints.
+,
+
+# --- Decision variables ----------------------------------------------
+
+field var.task_id         string    # logical task identifier
+field var.host_id         string    # candidate host assignment
+field var.globecell_id    string    # C_ij
+field var.assign_x        f64       # 0..1 fractional assignment (LP relax)
+
+# --- Task metrics (inputs) -------------------------------------------
+
+field param.task_p_cost_watts    f64   # expected compute power [W]
+field param.task_r_cost_bytes_s  f64   # expected IO [bytes/s]
+field param.task_eco_cost        f64   # EcoSys cost (e.g. CO2-equivalent)
+field param.task_chat_yield      f64   # ΔCHAT_i expected if executed
+field param.task_cyberrank_yield f64   # Δ‖r_t‖ or weighted improvement
+
+field param.host_corridor_margin f64
+# safety margin to corridor boundary from A_{H,C} (≥0 safe) [file:10]
+
+# --- Cell-level constraints ------------------------------------------
+
+field param.globecell_pmax_watts f64
+field param.globecell_rmax_bytes f64
+field param.globecell_eco_budget f64
+# maximum allowed EcoSys cost per epoch in this cell
+
+# --- Objective definition --------------------------------------------
+
+field objective.alpha_chat      f64  # weight for CHAT gain
+field objective.beta_cyberrank  f64  # weight for CyberRank gain
+field objective.gamma_eco_pen   f64  # weight for Eco penalty
+field objective.zeta_corridor   f64  # weight for corridor safety margin
+
+# The scalar objective per epoch:
+#   maximize  Σ_{tasks,hosts} x_{t,h} * (
+#       α * ΔCHAT_{t,h}
+#     + β * ΔCyberRank_{t,h}
+#     - γ * EcoCost_{t,h}
+#   ) + ζ * Σ_{hosts} corridor_margin_h
+#
+# encoded as symbolic for solver binding:
+
+field objective.expr string
+# "sum_{t,h} x[t,h]*(alpha_chat*task_chat_yield + \
+#                    beta_cyberrank*task_cyberrank_yield - \
+#                    gamma_eco_pen*task_eco_cost) + \
+#  zeta_corridor * sum_h host_corridor_margin"
+
+# --- Constraint set --------------------------------------------------
+
+# Compute budget per Globecell:
+field constraint.compute_budget_expr string
+# "forall C_ij: sum_{t,h in C_ij} x[t,h]*task_p_cost_watts <= globecell_pmax_watts"
+
+# IO budget per Globecell:
+field constraint.io_budget_expr string
+# "forall C_ij: sum_{t,h in C_ij} x[t,h]*task_r_cost_bytes_s <= globecell_rmax_bytes"
+
+# EcoSys budget per Globecell:
+field constraint.eco_budget_expr string
+# "forall C_ij: sum_{t,h in C_ij} x[t,h]*task_eco_cost <= globecell_eco_budget"
+
+# Neurorights / corridor safety:
+field constraint.corridor_safety_expr string
+# "forall hosts h: host_corridor_margin(h) >= 0"
+
+# Role-based envelopes (Learner/Mentor/Teacher):
+field constraint.role_envelope_expr string
+# "for each host h: OTA_freq(h), OTA_amp(h) implied by assignments x[t,h] \
+#  stay within role-specific viability kernel bounds"
+
+# --- Solution semantics ----------------------------------------------
+
+field solution.x_bounds_min f64 default 0.0
+field solution.x_bounds_max f64 default 1.0
+
+field solution.require_integer bool default false
+# if true, scheduler must treat x as {0,1} MILP not LP
+
+cyberlink.targetid donut.abm.state.v1
+cyberlink.relation consumes
+cyberlink.weighthint 1.0
