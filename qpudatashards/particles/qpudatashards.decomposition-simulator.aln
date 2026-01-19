@@ -1,0 +1,86 @@
+aln
+TITLE qpudatashards.decomposition-simulator.aln
+# Ecosafety shard for biodegradable tray decomposition simulations
+
+schema decomposition.sim.run.v1
+
+header
+  ecosafety-hex   0xDECOMP-2026-01-19-ALN
+  authordid-primary  bostrom18sd2ujv24ual9c9pshtxys6j8knh6xaead9ye7
+  authordid-alt      bostrom1ldgmtf20d6604a24ztr0jxht7xt7az4jhkmsrc
+  domain           "biodegradable-tray-decomposition"
+  simulator        "decomposition_simulator.rs"
+  region           "Phoenix-AZ-US"
+
+particle tray.recipe
+  recipe_id        text      # e.g. "TRAY-CPM-2026-01-A"
+  batch_id         text      # manufacturing or lab batch
+  material_family  text      # e.g. "cellulose-protein-mineral"
+  mass_initial_g   f64       # starting dry mass
+  surface_area_cm2 f64
+  thickness_mm     f64
+
+particle env.conditions
+  medium           text      # "aerobic-soil", "anaerobic-sludge", "marine"
+  temperature_C    f64
+  moisture_frac    f64       # 0–1
+  ph               f64
+  inoculum_type    text      # source of microbes
+  test_protocol    text      # e.g. "ISO-14851", "OECD-301F"
+  duration_days    f64
+
+particle decomp.metrics
+  mass_residual_g        f64
+  mass_loss_frac         f64   # (m0 - m_residual)/m0
+  co2_cum_mg             f64   # cumulative CO2 or CH4-C evolved
+  ch4_cum_mg             f64
+  o2_uptake_mg           f64
+  half_life_days         f64   # t50
+  t90_days               f64   # time to 90% mass loss if reached
+
+particle eco.toxicity
+  leachate_assay_id      text
+  acute_tox_index        f64   # 0–1 normalized (0 = none, 1 = severe)
+  chronic_tox_index      f64   # 0–1
+  microplastics_count_L  f64
+  microplastics_risk     f64   # 0–1 normalized
+  bioaccumulation_index  f64   # 0–1
+
+particle risk.coordinates
+  r_biodeg_speed         f64   # 0–1 (slow → fast, vs corridor)
+  r_residual_mass        f64   # 0–1 (high residue → negligible)
+  r_microplastics        f64   # 0–1
+  r_acute_tox            f64   # 0–1
+  r_chronic_tox          f64   # 0–1
+  r_out_of_band          f64   # max of above, 0–1
+
+particle residual.summary
+  V_residual             f64   # Lyapunov-like global residual
+  knowledge_factor       f64   # 0–1 (literature + data coverage)
+  eco_impact_value       f64   # 0–1 (benefit if adopted at scale)
+  risk_of_harm           f64   # 0–1 (corridor-based risk score)
+
+particle governance.meta
+  sim_run_id             text
+  sim_timestamp_utc      text
+  code_version_git       text
+  rust_build_hash        text
+  aln_schema_version     text
+  did_signature          text  # hex-encoded signature over shard contents
+
+contract corridor.biodeg_ok m -
+  # Require fast enough degradation and low residual mass and tox/microplastics
+  bool
+  return
+    m.r_biodeg_speed    >= 0.7 &&
+    m.r_residual_mass   <= 0.3 &&
+    m.r_microplastics   <= 0.2 &&
+    m.r_acute_tox       <= 0.2 &&
+    m.r_chronic_tox     <= 0.2 &&
+    m.r_out_of_band     <= 1.0
+
+contract ecosafety.accept m -
+  bool
+  return corridor.biodeg_ok m &&
+         m.risk_of_harm      <= 0.20 &&
+         m.eco_impact_value  >= 0.80
