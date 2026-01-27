@@ -1,0 +1,35 @@
+# AirGlobePlanningSafetySecurity
+
+Production-grade C++ implementation of ESPD, DtD_tDt, and KTSF models for AirGlobe/Cyboquatics EcoNet integration.
+
+## Features
+- **ESPD**: Eco-benefit/risk computation extending CEIM/CPVM kernels
+- **DtD_tDt**: Multonry sensor trust scalar with diagnostics
+- **KTSF**: Karma triple fusion → adaptive security tolerance
+- **Shard I/O**: ALN-compatible CSV read/write (qpudatashards/particles/)
+- **Phoenix-tuned**: Grid intensity gating (≤50 g CO₂/kWh), ISO 14851 materials
+
+## Build & Run
+```bash
+mkdir build && cd build
+cmake ..
+make -j
+./airglobe_demo          # Demo shard processing
+./airglobe_demo --test   # Unit tests
+Eco-Impact Score
+Level 0.89 (net CO₂ avoidance, biodegradable media, renewable grid gating)
+
+Shard Schema
+```
+nodeid,medium,region,twindowstart,twindowend,B_raw,R_raw,Dt,K_i,T_i,B_adj,security_response_cap,evidence_hex
+Sample: AG-PHX-01,air,Phoenix-AZ,...
+
+License
+MIT - Public EcoNet repository
+
+```csv
+# AirGlobePlanningSafetySecurity/qpudatashards/particles/PlanningSafetySecurityAirWater2026v1.csv
+nodeid,medium,region,twindowstart,twindowend,B_raw,R_raw,Dt,K_i,T_i,B_adj,security_response_cap,evidence_hex
+AG-PHX-01,air,Phoenix-AZ,2026-01-20T00:00:00Z,2026-01-21T00:00:00Z,0.88,0.18,0.94,0.90,0.85,0.83,LOW,a1b2c3d4e5f67890
+CQ-GILA-07,water,Gila-AZ,2026-01-20T00:00:00Z,2026-01-21T00:00:00Z,0.92,0.16,0.97,0.93,0.88,0.89,LOW,1122334455667788
+AG-PHX-EXP-03,air,Phoenix-AZ,2026-01-20T00:00:00Z,2026-01-21T00:00:00Z,0.81,0.32,0.71,0.55,0.40,0.58,MEDIUM,c5d6e7f8a9b0c1d2
