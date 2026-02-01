@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "contracts_core",      # existing or planned: corridorpresent/safestepinfra-style
+    "mpc_kernel",
+    "mpc_constraints",
+    "mpc_runner",
+]
+
+resolver = "2"
