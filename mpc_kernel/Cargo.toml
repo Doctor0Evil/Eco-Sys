@@ -1,0 +1,9 @@
+[package]
+name = "mpc_kernel"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+contracts_core = { path = "../contracts_core" }
+serde = { version = "1", features = ["derive"] }
+thiserror = "1"
