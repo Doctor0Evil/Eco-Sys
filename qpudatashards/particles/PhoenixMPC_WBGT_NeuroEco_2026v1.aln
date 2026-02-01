@@ -1,0 +1,105 @@
+aln PhoenixMPC_WBGT_NeuroEco_2026v1
+
+record MPCConfigBinding2026v1
+  string  project_id              // e.g., "Phoenix_MAR_MPC_01"
+  string  region                  // e.g., "Phoenix-AZ-US"
+  string  infra_node_id           // matches InfraNodeShardId
+  string  mpc_kernel_version      // Rust crate version, e.g., "0.1.0"
+  string  mpc_constraints_version // Rust crate version, e.g., "0.1.0"
+  string  mpc_runner_version      // Rust crate version, e.g., "0.1.0"
+  string  wbgt_station_id         // weather / WBGT station source
+  string  wbgt_series_id          // ID of WBGT time series shard
+  string  neuro_series_id         // ID of neural-load / engagement shard
+  string  eco_series_id           // ID of eco-impact shard
+  float   horizon_seconds         // MPC horizon length
+  int     horizon_steps           // MPC steps
+  float   dt_seconds              // MPC step size
+  float   e_min                   // Eco-impact floor used by BiocompatObjective (0–1)
+  float   r_max                   // Risk ceiling used by BiocompatObjective (0–1)
+  float   max_cognitive_load      // Max allowed neural load index (0–1)
+  float   target_energy_kwh_per_m3  // target kWh per m³ water treated (or similar)
+  float   target_eco_score_min      // minimum EcoImpactScore for this pilot (0–1)
+  string  notes
+
+record WBGTSeries2026v1
+  string  wbgt_series_id          // joins to MPCConfigBinding2026v1.wbgt_series_id
+  string  station_id
+  string  timezone
+  // Each sample is a wet-bulb globe temperature reading and local index.
+  // WBGT is in degrees Celsius.
+  record  samples
+    string timestamp_utc_iso8601
+    float  wbgt_c
+    float  wbgt_normalized  // mapped into [0,1] corridor coordinate
+    float  wbgt_risk_band   // 0=safe, 1=warning, 2=danger
+
+record NeuroLoadSeries2026v1
+  string  neuro_series_id         // joins to MPCConfigBinding2026v1.neuro_series_id
+  string  sensor_profile          // e.g., "EEG32ch_1kHz", "wristEMG8ch_1kHz"
+  string  host_profile_id         // anonymized subject / cohort ID
+  // Neural load and engagement metrics in [0,1] normalized form.[file:92]
+  record  samples
+    string timestamp_utc_iso8601
+    float  neural_load_index      // 0–1, higher = more load
+    float  healthy_engagement_band // 0–1, as in HealthyEngagementBand
+    float  fatigue_index          // 0–1, as in FatigueIndex
+    float  cognitive_load_index   // 0–1, derived from EEG/behavior
+    string notes
+
+record EcoImpactSeries2026v1
+  string  eco_series_id           // joins to MPCConfigBinding2026v1.eco_series_id
+  string  infra_type              // e.g., "MAR_pump", "AirGlobe", "AI_cluster"
+  string  baseline_profile_id     // ID of baseline, non-optimized configuration
+  // Eco metrics per time-slice, normalized via CEIM-style minmax formulas.[file:90]
+  record  samples
+    string timestamp_utc_iso8601
+    float  power_kw               // instantaneous power draw
+    float  flow_or_throughput     // e.g., m³/h water treated or queries/s
+    float  kwh_per_unit_work      // kWh per m³ or per 1k queries
+    float  eco_impact_score       // 0–1 EcoImpactScore
+    float  device_hours_reduced   // AvgDailyDeviceHoursReduced contribution
+    float  annual_energy_saved_per_user_kwh
+    float  embodied_devices_averted_per_1000_users_per_year
+    string notes
+
+record MPC_TelemetryBinding2026v1
+  string  project_id
+  string  infra_node_id
+  string  wbgt_series_id
+  string  neuro_series_id
+  string  eco_series_id
+  string  mpc_binding_id          // unique binding ID for MPC runs
+  // Snapshots of MPC runs linked to telemetry windows.
+  record  runs
+    string mpc_run_id
+    string start_timestamp_utc_iso8601
+    string end_timestamp_utc_iso8601
+    float  horizon_seconds
+    int    horizon_steps
+    // Aggregated safety and eco metrics over the run window.
+    float  avg_wbgt_c
+    float  max_wbgt_c
+    float  wbgt_violation_fraction   // fraction of time in risk bands > 1
+    float  avg_neural_load_index
+    float  max_neural_load_index
+    float  avg_fatigue_index
+    float  max_fatigue_index
+    float  eco_impact_score_before   // baseline EcoImpactScore
+    float  eco_impact_score_after    // EcoImpactScore with MPC+biocompatible objective
+    float  kwh_per_unit_work_before
+    float  kwh_per_unit_work_after
+    float  device_hours_reduced_delta   // delta vs baseline over this run
+    string notes
+
+record PhoenixMPC_WBGT_NeuroEco_Metadata2026v1
+  string  authorsystem
+  string  primarybostromaddr
+  string  altbostromaddr
+  string  safeaddrs
+  string  responsehashhex
+  float   Tscore0to1
+  float   Pscore0to1
+  float   Rscore0to1
+  float   Cscore0to1
+  string  timestamputciso8601
+  string  notes
