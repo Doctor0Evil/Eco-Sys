@@ -1,0 +1,10 @@
+[package]
+name = "mpc_constraints"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+contracts_core = { path = "../contracts_core" }
+mpc_kernel = { path = "../mpc_kernel" }
+serde = { version = "1", features = ["derive"] }
+thiserror = "1"
