@@ -1,0 +1,29 @@
+field,name              ,type   ,units     ,notes
+feedstock_id            ,string ,–        ,LAWN-PHX-AGG-01 style
+region                  ,string ,–        ,Phoenix-AZ-US
+lat                     ,f64    ,deg      ,
+lon                     ,f64    ,deg      ,
+
+route                   ,string ,–        ,COMBUSTION | DIGESTION | PYROLYSIS
+moisture_frac           ,f64    ,–        ,0–1 mass fraction
+ash_frac                ,f64    ,–        ,0–1
+n_percent_dw            ,f64    ,%        ,dry weight N
+contaminant_rtox_01     ,f64    ,–        ,leachate toxicity vs corridor
+microplastics_r_01      ,f64    ,–        ,rmicroplastics for ash/char
+heavy_metals_r_01       ,f64    ,–        ,normalized vs bands
+
+t90_days                ,f64    ,days     ,90% mass loss in Phoenix compost/soil
+bioenergy_kwh_per_kg    ,f64    ,kWh/kg   ,delivered, route-specific
+co2eq_kg_per_kg         ,f64    ,kg/kg    ,LCA emissions per kg grass
+transport_km            ,f64    ,km       ,average haul distance
+rtrans_01               ,f64    ,–        ,
+rmat_01                 ,f64    ,–        ,
+rman_01                 ,f64    ,–        ,
+
+ecoimpact_01            ,f64    ,–        ,
+riskofharm_01           ,f64    ,–        ,
+knowledgefactor_01      ,f64    ,–        ,
+
+violation_residual_Vt   ,f64    ,–        ,
+hexstamp                ,string ,–        ,
+notes                   ,string ,–        ,
