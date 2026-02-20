@@ -1,0 +1,29 @@
+field,name              ,type     ,units        ,notes
+nodeid                  ,string   ,–           ,HYDRO-MOWER-PHX-01 style
+region                  ,string   ,–           ,Phoenix-AZ-US
+lat                     ,f64      ,deg         ,
+lon                     ,f64      ,deg         ,
+
+cutarea_m2_per_cycle    ,f64      ,m2          ,treated area per mowing cycle
+nozzle_pressure_bar     ,f64      ,bar         ,supply at mower inlet
+flow_l_per_min          ,f64      ,L/min       ,average during cut
+runtime_min             ,f64      ,min         ,per cycle
+
+wateruse_l_per_m2       ,f64      ,L/m2        ,water per area (corridor axis)
+energy_equiv_kwh        ,f64      ,kWh         ,hydraulic → electrical equivalent
+noise_dba               ,f64      ,dBA         ,operator position
+spray_drift_m           ,f64      ,m           ,max drift radius in test
+
+rcutquality_01          ,f64      ,–           ,0 safe (good), 1 at band
+rwateruse_01            ,f64      ,–           ,
+rnoise_01               ,f64      ,–           ,
+rspraydrift_01          ,f64      ,–           ,
+rsafety_01              ,f64      ,–           ,pressure, deck, runaway risk
+
+ecoimpact_01            ,f64      ,–           ,E in 0–1 vs gas/electric baseline
+riskofharm_01           ,f64      ,–           ,R aggregate
+knowledgefactor_01      ,f64      ,–           ,K for this node config
+
+violation_residual_Vt   ,f64      ,–           ,Lyapunov residual over rx
+hexstamp                ,string   ,–           ,Merkle/ALN hex bundle
+notes                   ,string   ,–           ,
