@@ -1,0 +1,4 @@
+node_id,asset_type,region,lane,t_window_start,t_window_end,cin_co2_ppm,cout_co2_ppm,pm25_in_ugm3,pm25_out_ugm3,flow_air_m3h,greywater_m3d,grid_gco2_kwh,energy_kwh_day,mcaptured_co2_kg_day,pm25_removed_g_day,cpvm_v,dt_multonry,ecoimpact_raw,ecoimpact_adj,karma_delta,evidence_hex
+ESK-PHX-001,EcoSkywalkCorridor,Global-CONCRETE,C0-CONSERV,2026-01-20T00:00:00Z,2026-01-21T00:00:00Z,420.5,380.2,18.4,14.1,480000,12.5,45,520.0,412.6,19.8,0.92,0.95,0.86,0.81,0.84,a1b2c3d4e5f67890
+ESK-PHX-001,EcoSkywalkCorridor,Global-CONCRETE,C1-BALANCED,2026-01-21T00:00:00Z,2026-01-22T00:00:00Z,421.0,372.8,19.0,13.5,520000,12.5,44,560.0,455.9,22.1,0.90,0.93,0.88,0.82,0.85,b4c5d6e7f8a9b0c1
+ESK-PHX-PLANTS-01,EcoSkywalkPlantBay,Global-CONCRETE,C0-CONSERV,2026-01-20T00:00:00Z,2026-01-21T00:00:00Z,420.5,415.0,17.5,15.9,60000,2.1,45,48.0,27.8,3.2,0.94,0.96,0.79,0.76,0.80,c5d6e7f8a9b0c1d2
