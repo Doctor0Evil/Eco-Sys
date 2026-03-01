@@ -1,0 +1,6 @@
+graph LR
+    A[Eco‑Sys Core] -->|serialize_commit()| B[ALN Manifest (.toml)]
+    B -->|encode_hex + compress_brotli| C[Typewriter Record]
+    C -->|multi-sig attestation| D[Googolswarm Ledger Node]
+    D -->|consensus seal| E[Public Blockchain Proof]
+    E -->|back‑reference| F[Data‑Lake Archive]
