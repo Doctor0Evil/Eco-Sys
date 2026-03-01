@@ -1,0 +1,8 @@
+nodeid,region,lat,lon,medium,nodetype,twindowstart,twindowend,parameter,rawvalue,rawunit,rxvalue,rmin,rmax,wi,Vt,ecoimpactscore,ecoimpactlevel,speciesid,rspecies,Vspecies,rsigma,Dt,kerdeployable,lane,evidencehex,signinghex
+PHX-MAG-CONC-01,PHX-Urban-Core,33.45,-112.07,built,MAGCONCRETE,2026-02-28T00:00Z,2026-02-28T01:00Z,r_EM,80,uT,0.8,0.0,1.0,1.2,0.77,0.9,High,bee,0.22,0.05,0.28,0.96,TRUE,PROD,0xa7b8c9d0e1f22334,0x19af32bc47de9850
+PHX-MAG-CONC-01,PHX-Urban-Core,33.45,-112.07,built,MAGCONCRETE,2026-02-28T00:00Z,2026-02-28T01:00Z,r_PM25,4.0,ug/m3,0.6,0.0,1.0,1.0,0.36,0.9,High,soilmicrobiome,0.18,0.03,0.22,0.96,TRUE,PROD,0xc1d2e3f40596a7b8,0x5e4d3c2b1a09f8e7
+PHX-MAG-CONC-01,PHX-Urban-Core,33.45,-112.07,built,MAGCONCRETE,2026-02-28T00:00Z,2026-02-28T01:00Z,r_leach,0.03,rel,0.3,0.0,1.0,1.5,0.14,0.91,High,aquatic,0.12,0.02,0.25,0.97,TRUE,PROD,0x1122aa55cc77ee99,0x7766554433221100
+PHX-MAG-CONC-01,PHX-Urban-Core,33.45,-112.07,built,MAGCONCRETE,2026-02-28T00:00Z,2026-02-28T01:00Z,r_Bn,3.0,-,0.2,0.0,1.0,0.8,0.03,0.9,High,none,0.0,0.0,0.2,0.98,TRUE,PROD,0x9a8b7c6d5e4f3021,0xabcdef0123456789
+PHX-MAG-CONC-01,PHX-Urban-Core,33.45,-112.07,built,MAGCONCRETE,2026-02-28T00:00Z,2026-02-28T01:00Z,r_v,0.12,m/s,0.4,0.0,1.0,0.9,0.06,0.9,High,bird,0.16,0.04,0.24,0.95,TRUE,PROD,0xdeadc0de12345678,0x0fedcba987654321
+PHX-MAG-CONC-01,PHX-Urban-Core,33.45,-112.07,built,MAGCONCRETE,2026-02-28T00:00Z,2026-02-28T01:00Z,r_struct,0.1,rel,0.2,0.0,1.0,1.1,0.04,0.9,High,futurehuman,0.1,0.02,0.26,0.96,TRUE,PROD,0x55aa33cc99ee77dd,0x1234567890abcdef
+PHX-MAG-CONC-01,PHX-Urban-Core,33.45,-112.07,built,MAGCONCRETE,2026-02-28T00:00Z,2026-02-28T01:00Z,VTOTAL,,.,,,,,0.9,0.9,High,all,0.2,0.05,0.24,0.96,TRUE,PROD,0xa3f5c7e9b1d20468,0x89abcdef01234567
