@@ -1,0 +1,43 @@
+# ==========================================================
+#  Eco-Sys ALN Manifest — Typewriter Provenance Integration
+#  Anchors: Googolswarm Blockchain + Virta-Sys / VSC-ARTEMIS
+# ==========================================================
+
+[meta]
+name        = "Eco-Sys Commit Anchor"
+version     = "1.0.0"
+created_at  = "2026-02-28T22:41:00Z"
+framework   = "Typewriter"
+hash_format = "SHA-512"
+chain       = "Googolswarm / ALN"
+
+[authors]
+maintainer  = "Doctor0Evil"
+did         = "bostrom18sd2ujv24ual9c9pshtxys6j8knh6xaead9ye7"
+attestation = "multi-sig-approved"
+record_type = "nonfictional"
+
+[anchors]
+root_commit         = "git:refs/heads/main"
+eco_core_proof      = "0xe3adf09128b640cc3b2c...9cfe12b3e8f5a2f4"
+data_lake_entry     = "/data-lake/eco-sys/traces/2026-02-28.json"
+virta_sys_anchor    = "/anchors/virta-sys-2026-02-28.json"
+artemis_integration = "/anchors/vsc-artemis-energy-plan.json"
+
+[serialization]
+encoding   = "hex+brotli"
+compression_level = 9
+checksum   = true
+timestamp  = true
+
+[energy]
+machine_count      = 8
+baseline_x_mwz     = 1200.0
+baseline_y_mwz     = 900.0
+target_utilization = 0.7
+compliance_mode    = "Eco-Sys-Regenerative"
+
+[audit]
+ledger_node = "Googolswarm.os-node-42"
+proof_format = "ALN-MultiSig-v2"
+export_mode  = "immutable"
