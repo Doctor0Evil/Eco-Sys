@@ -1,0 +1,52 @@
+{
+  "config_version": "1.0.0",
+  "eco_sys_mode": true,
+  "repositories": [
+    {
+      "name": "Virta-Sys",
+      "url": "https://github.com/Doctor0Evil/Virta-Sys.git",
+      "branch": "main",
+      "sync_enabled": true
+    },
+    {
+      "name": "VSC-ARTEMIS",
+      "url": "https://github.com/Doctor0Evil/VSC-ARTEMIS.git",
+      "branch": "main",
+      "sync_enabled": true
+    },
+    {
+      "name": "VM-Cluster-Nation",
+      "url": "https://github.com/Doctor0Evil/VM-Cluster-Nation.git",
+      "branch": "main",
+      "sync_enabled": true
+    },
+    {
+      "name": "Googolswarm.os",
+      "url": "https://github.com/Doctor0Evil/Googolswarm.os.git",
+      "branch": "main",
+      "sync_enabled": true
+    },
+    {
+      "name": "Eco-Sys",
+      "url": "https://github.com/Doctor0Evil/Eco-Sys.git",
+      "branch": "main",
+      "sync_enabled": true
+    }
+  ],
+  "energy_orchestration": {
+    "total_machines": 8,
+    "baseline_x_mwz": 1200.0,
+    "baseline_y_mwz": 900.0,
+    "target_utilization": 0.7
+  },
+  "typewriter_settings": {
+    "authorship_did": "bostrom18sd2ujv24ual9c9pshtxys6j8knh6xaead9ye7",
+    "journal_path": "/data-lake/eco-sys/typewriter-journal.json",
+    "aln_manifest_path": "/manifests/eco-sys.aln.toml"
+  },
+  "compliance": {
+    "nonfiction_only": true,
+    "tamper_evident": true,
+    "blockchain_anchor": "Googolswarm"
+  }
+}
