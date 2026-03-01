@@ -1,0 +1,24 @@
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# Data lake (local only)
+/data-lake/*
+!/data-lake/eco-sys/
+/data-lake/eco-sys/*.json
+!/data-lake/eco-sys/typewriter-journal.json
+
+# Temporary files
+*.tmp
+*.log
+/tmp/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
