@@ -1,71 +1,134 @@
-***
+# Eco‑Sys
 
-### `Eco-Sys/README.md`
+**Environmental Compliance & Energy‑Aware Orchestration Layer**
 
-> Eco-Sys is a non-fiction, policy-enforced environmental computation layer within the Virta-Sys and VSC-ARTEMIS ecosystems. It provides verified repository orchestration and energy-aware automation designed for sustainable infrastructure.
+Eco‑Sys is a cryptographically verifiable, nonfictional orchestration framework designed to minimize energy consumption across compute clusters while maintaining full computational throughput. It integrates seamlessly with **Virta‑Sys**, **VSC‑ARTEMIS**, and the **Googolswarm blockchain**, providing tamper‑evident authorship trails and sustainable execution governance.
 
-***
+---
 
-## About
+## Core Principles
 
-**Eco-Sys** is an environmentally responsible monument for precision calculations across **public-transit networks**, **waterline optimization**, and **earth-restoration technologies**.  
-It integrates advanced **workflow orchestrators** to minimize the energy footprint of physical hardware and machine operations — *without diminishing computational power or throughput.*
+1. **Nonfiction Enforcement**: Every operation produces real, verifiable output — no simulated or illustrative data.
+2. **Energy‑Aware Scheduling**: Adaptive orchestration reduces physical machine power consumption without sacrificing capability.
+3. **Cryptographic Provenance**: All commits are signed, hashed (SHA‑512), and anchored to the Googolswarm ALN ledger.
+4. **Typewriter Integration**: Immutable authorship and contribution lineage persisted in the Data‑Lake.
 
-Eco-Sys acts as a **cryptographically verifiable source-of-truth layer** for **Virta-Sys** and **VSC-ARTEMIS**, ensuring each data point and commit reflects **real-world, nonfictional progress**.  
-All activity in Eco-Sys is recorded within the **Typewriter** authorship framework and persisted in the **Data-Lake**, maintaining tamper-evident ownership trails and cross-system compliance.
+---
 
-### Foundational Alignment
+## Architecture Overview
 
-- **Virta-Sys:** Virtual cluster substrate for dynamic AI orchestration.  
-- **VSC-ARTEMIS:** System-brain and energy-logic orchestrator for intelligent compute routing.  
-- **Eco-Sys:** Environmental and compliance layer ensuring ethical orchestration, sustainable execution, and restorative design.
+┌─────────────────┐
+│ VSC‑ARTEMIS │ (AI orchestration brain)
+└────────┬────────┘
+│
+↓
+┌─────────────────┐
+│ Virta‑Sys │ (Virtual cluster substrate)
+└────────┬────────┘
+│
+↓
+┌─────────────────┐
+│ Eco‑Sys │ (Environmental & compliance layer)
+└────────┬────────┘
+│
+↓
+┌─────────────────┐ ┌──────────────────┐
+│ Typewriter │─────→│ Data‑Lake │
+└─────────────────┘ └──────────────────┘
+│
+↓
+┌─────────────────┐
+│ Googolswarm ALN │ (Blockchain anchor)
+└─────────────────┘
 
-***
 
-## Core Capabilities
+---
 
-- **Repository Tracking:**  
-  Automatically discover and synchronize critical repositories including `Virta-Sys`, `VSC-ARTEMIS`, `VM-Cluster-Nation`, and `Googolswarm.os`.
+## Installation
 
-- **Non-Fiction Enforcement:**  
-  Guarantees every process and dataset results in *tangible output* — whether code, configuration, or validation metadata.  
-  No simulated, imaginary, or illustrative data is permitted.
+```bash
+git clone https://github.com/Doctor0Evil/Eco-Sys.git
+cd Eco-Sys
+cargo build --release
+Usage
+1. Validate Configuration
+bash
+cargo run --bin virta-git -- \
+  --config virta-git.config.json \
+  --repo-root ./virta-git-repos \
+  validate-latest
+2. Generate Energy Plan
+bash
+cargo run --bin virta-git -- energy-plan \
+  --total-machines 8 \
+  --baseline-x-mwz 1200.0 \
+  --baseline-y-mwz 900.0 \
+  --target-utilization 0.7
+3. Anchor Commit to ALN
+bash
+cargo run --release
+This will:
 
-- **Authorship & Compliance:**  
-  Implements **Typewriter semantics** to log signed authorship and embed immutable evidence of ownership and contribution lineage within the Data-Lake.
+Load configuration
 
-- **Energy-Aware Scheduling:**  
-  Leverages adaptive orchestration logic to lower physical machine power consumption while preserving 100% system capability during AI chat triggers or interactive workloads.
+Compute energy efficiency
 
-***
+Validate repository state
 
-## Basic Usage
+Serialize and sign commit
 
-1. Place the configuration file at your workspace root:
+Write Typewriter journal
 
-   ```
-   virta-git.config.json
-   ```
+Anchor to Googolswarm blockchain
 
-   Ensure it aligns with your **Virta-Sys** / **VSC-ARTEMIS** anchors.
+File Structure
+text
+/Eco-Sys
+├── Cargo.toml
+├── README.md
+├── virta-git.config.json
+├── src/
+│   ├── main.rs
+│   ├── lib.rs
+│   ├── eco_core.rs
+│   └── aln_anchor.rs
+├── manifests/
+│   └── eco-sys.aln.toml
+├── data-lake/
+│   └── eco-sys/
+│       └── typewriter-journal.json
+└── docs/
+    └── architecture/
+        ├── eco-sys-trace.mmd
+        └── eco-sys-anchor-flow.mmd
+Authorship & Compliance
+Author: Doctor0Evil
+DID: bostrom18sd2ujv24ual9c9pshtxys6j8knh6xaead9ye7
+Alternate DID: bostrom1ldgmtf20d6604a24ztr0jxht7xt7az4jhkmsrc
+ERC‑20 Address: 0x519fC0eB4111323Cac44b70e1aE31c30e405802D
 
-2. Validate repositories and confirm their state:
+All commits are multi‑sig attested and conform to:
 
-   ```bash
-   cargo run --bin virta-git -- \
-     --config virta-git.config.json \
-     --repo-root ./virta-git-repos \
-     validate-latest
-   ```
+ALN/KYC/DID compliance
 
-3. (Optional) Generate an experimental **energy utilization plan** to benchmark machine optimization:
+Quantum cryptographic governance
 
-   ```bash
-   cargo run --bin virta-git -- energy-plan \
-     --total-machines 8 \
-     --baseline-x-mwz 1200.0 \
-     --baseline-y-mwz 900.0 \
-     --target-utilization 0.7
-   ```
+Immutable blockchain anchoring
 
-***
+License
+MIT License — See LICENSE file for details.
+
+Contributing
+Eco‑Sys follows strict nonfiction and energy‑compliance standards. All contributions must:
+
+Pass SHA‑512 validation
+
+Include Typewriter authorship metadata
+
+Demonstrate measurable energy efficiency improvements
+
+Be anchored to Googolswarm ALN ledger
+
+Submit pull requests to: https://github.com/Doctor0Evil/Eco-Sys
+
+Built with Rust 🦀 • Anchored to Googolswarm ⛓️ • Powered by Virta‑Sys & VSC‑ARTEMIS 🌐
